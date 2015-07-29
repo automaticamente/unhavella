@@ -1,6 +1,4 @@
 var fs = require('fs');
-var _ = require('underscore');
-_.mixin(require('underscore.deferred'));
 
 var Twit = require('twit');
 var generator = require('./pairs');
@@ -13,13 +11,17 @@ var tweet = function() {
     'use strict';
 
     generator().then(function(tweet) {
-        Twitter.post('statuses/update', { status: tweet }, function(err, data, response) {
-          console.log(data)
+        Twitter.post('statuses/update', {
+            status: tweet
+        }, function(error, data, response) {
+            if(error) {
+                throw new Error(error);
+            }
+
+            console.log(tweet);
         });
     });
 };
-
-
 
 setInterval(function() {
     'use strict';
@@ -28,7 +30,6 @@ setInterval(function() {
     } catch (e) {
         console.log(e);
     }
-}, 1000 * 60 * 60);
+}, 1000 * 60 * 15);
 
-// Tweet once on initialization
 tweet();

@@ -1,6 +1,7 @@
 var fs = require('fs');
 var _ = require('underscore');
-_.mixin( require('underscore.deferred') );
+_.mixin(require('underscore.deferred'));
+
 var S = require('string');
 
 var wordList = require('./words.json');
