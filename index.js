@@ -14,7 +14,7 @@ var tweet = function() {
         Twitter.post('statuses/update', {
             status: tweet
         }, function(error, data, response) {
-            if(error) {
+            if (error) {
                 throw new Error(error);
             }
 
