@@ -24,23 +24,6 @@ var getPair = function(initial) {
     return false;
 };
 
-var template = 'Unha vella nos tempos {{start}}, fixo da cona {{end}} 🎶🎵';
-
-var det = {
-    initial: {
-        'm': 'do ',
-        'f': 'da ',
-        'mpl': 'dos ',
-        'fpl': 'das '
-    },
-    final: {
-        'm': 'un ',
-        'f': 'unha ',
-        'mpl': 'uns ',
-        'fpl': 'unhas '
-    }
-};
-
 var generate = function() {
     'use strict';
     var defer = new _.Deferred();
@@ -50,11 +33,11 @@ var generate = function() {
 
     if (final) {
         var values = {
-            start: det.initial[initial.gender] + initial.word,
-            end: det.final[final.gender] + final.word,
+            start: config.det.initial[initial.gender] + initial.word,
+            end: config.det.final[final.gender] + final.word,
         };
 
-        defer.resolve(S(template).template(values).s);
+        defer.resolve(S(config.template).template(values).s);
     } else {
         return generate();
     }
