@@ -30,6 +30,6 @@ setInterval(function() {
     } catch (e) {
         console.log(e);
     }
-}, 1000 * 60 * 15);
+}, 1000 * 60 * 30);
 
 tweet();
