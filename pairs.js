@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs');
 var _ = require('underscore');
 _.mixin(require('underscore.deferred'));
@@ -9,7 +11,6 @@ var wordList = require('./words.json');
 var config = fs.existsSync('./local.config.js') ? require('./local.config.js') : require('./config.js');
 
 var getPair = function(initial) {
-    'use strict';
 
     var matches = wordList.filter(function(word) {
         return initial.word.slice(config.characters) === word.word.slice(config.characters);
@@ -25,7 +26,6 @@ var getPair = function(initial) {
 };
 
 var generate = function() {
-    'use strict';
     var defer = new _.Deferred();
 
     var initial = _.sample(wordList);
